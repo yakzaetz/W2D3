@@ -13,3 +13,4 @@ class Player
         return input.map{ |ele| ele.to_i }   
     end
 end
+

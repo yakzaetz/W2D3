@@ -92,11 +92,5 @@ class Board
         end 
         return false
     end
-
-    def method_name
-        
-    end
     
 end
-
-p Board.new
