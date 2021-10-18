@@ -2,21 +2,35 @@ require_relative "./board.rb"
 require_relative "./human_player.rb"
 
 class Game
-    
-    def initialize(player1_mark, player2_mark)
+    def initialize(player_1_mark, player_2_mark)
+        @player_1 = Player.new(player_1_mark)
+        @player_2 = Player.new(player_2_mark)
         @board = Board.new
-        @player1 = Player.new(player1_mark)
-        @player2 = Player.new(player2_mark)
-        @curent_player = @player1
+        @curernt_player = @player_1
     end
 
     def switch_turn
-        if @curent_player == @player1
-            @curent_player = @player2
-        else 
-            @current_player = @player1   
-        end
-    end 
+        if @curernt_player == @player_1
+            @curernt_player = @player_2
+        else
+            @curernt_player = @player_1
+        end 
+    end
+
+    def play
+        while @board.empty_positions?
+            @board.print
+            position = @curernt_player.get_position
+            @board.place_mark(position, @curernt_player.mark)
+            if @board.win?(@curernt_player.mark)
+                p "victory, #{@current_player} wins"
+                return 
+            else
+                self.switch_turn
+            end 
+        end 
+        p "draw"
+    end
+    
 end
 
-p Game.new(:X, :O)

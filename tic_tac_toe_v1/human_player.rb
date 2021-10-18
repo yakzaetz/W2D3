@@ -1,16 +1,16 @@
 class Player
     attr_reader :mark
-    def initialize(value)
-        @mark = value
-    end
+   def initialize(mark_value)
+    @mark = mark_value
+   end 
 
-    def get_position
-        puts "player #{@mark}, enter the position as two numbers with a space between them"
-        input = gets.chomp.split(" ")
+   def get_position
+    puts "enter the position as two numbers with a space between them"
+       input = gets.chomp.split
         if input.length != 2
-            raise "error, enter a valid entry" 
+            raise "error"
         end 
-        return input.map{ |ele| ele.to_i }   
-    end
+    input.map {|ele| ele.to_i }
+   end
 end
 
